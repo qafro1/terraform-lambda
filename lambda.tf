@@ -39,10 +39,10 @@ resource "aws_lambda_function" "web_lambda" {
   source_code_hash  = "${data.archive_file.zip.output_base64sha256}"
   runtime          = "python3.6"
 
-  environment {
-    variables = {
-      #key = "value"
-    }
-  }
+  #environment {
+  #  variables = {
+  #    key = "value"
+  #  }
+  #}
 }
 

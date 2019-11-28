@@ -45,6 +45,16 @@ resource "aws_lambda_function" "lambda" {
   #}
 }
 
+resource "aws_lambda_permission" "apigw_lambda" {
+  statement_id  = "AllowExecutionFromAPIGateway"
+  action        = "lambda:InvokeFunction"
+  function_name = "${aws_lambda_function.lambda.function_name}"
+  principal     = "apigateway.amazonaws.com"
+  source_arn    = "${aws_api_gateway_rest_api.api.id}/*"
+  
+}
+
+
 # ADD trigger API GATEWAY to lambda function
 
 resource "aws_api_gateway_rest_api" "api" {
@@ -58,7 +68,7 @@ resource "aws_api_gateway_resource" "resource" {
   path_part   = "test"
 }
 
-resource "aws_api_gateway_method" "methrod" {
+resource "aws_api_gateway_method" "method" {
   rest_api_id   = "${aws_api_gateway_rest_api.api.id}"
   resource_id   = "${aws_api_gateway_resource.resource.id}"
   http_method   = "GET"
@@ -68,8 +78,11 @@ resource "aws_api_gateway_method" "methrod" {
 resource "aws_api_gateway_integration" "integration" {
   rest_api_id = "${aws_api_gateway_rest_api.api.id}"
   resource_id = "${aws_api_gateway_resource.resource.id}"
-  http_method = "${aws_api_gateway_method.methrod.http_method}"
-  type        = "MOCK"
+  http_method = "${aws_api_gateway_method.method.http_method}"
+  type        = "AWS_PROXY"
+  uri         = "${aws_lambda_function.lambda.invoke_arn}"
+          
+
 }
 
 resource "aws_api_gateway_deployment" "deployment" {

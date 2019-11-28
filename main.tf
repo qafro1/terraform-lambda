@@ -4,8 +4,8 @@ provider "archive" {}
 
 data "archive_file" "zip" {
   type        = "zip"
-  source_file = "hello_lambda.py"
-  output_path = "hello_lambda.zip"
+  source_file = "guru_lambda.py"
+  output_path = "guru_lambda.zip"
 }
 
 data "aws_iam_policy_document" "policy" {
@@ -28,13 +28,14 @@ resource "aws_iam_role" "iam_for_lambda" {
 }
 
 resource "aws_lambda_function" "lambda" {
-  function_name = "hello_lambda"
+  count = "${var.enabled ? 1 : 0}"
+  function_name = "guru_lambda"
 
   filename         = "${data.archive_file.zip.output_path}"
   source_code_hash = "${data.archive_file.zip.output_base64sha256}"
 
   role    = "${aws_iam_role.iam_for_lambda.arn}"
-  handler = "hello_lambda.lambda_handler"
+  handler = "guru_lambda.lambda_handler"
   runtime = "python3.6"
 
   #environment {
@@ -43,3 +44,6 @@ resource "aws_lambda_function" "lambda" {
   #  }
   #}
 }
+
+
+

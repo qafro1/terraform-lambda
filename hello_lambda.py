@@ -1,4 +1,12 @@
-import os
-
 def lambda_handler(event, context):
-    return "{} from Lambda!".format(os.environ['greeting'])
+    print("In lambda handler")
+
+    resp = {
+        "statusCode": 200,
+        "headers": {
+            "Access-Control-Allow-Origin": "*",
+        },
+        "body": "This terraform is good"
+    }
+
+    return resp

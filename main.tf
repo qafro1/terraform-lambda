@@ -1,6 +1,5 @@
 # Specify the provider and access details
-
-
+# Upload file for lambda 
 provider "archive" {}
 
 data "archive_file" "zip" {
@@ -38,9 +37,9 @@ resource "aws_lambda_function" "lambda" {
   handler = "hello_lambda.lambda_handler"
   runtime = "python3.6"
 
-  environment {
-    variables = {
-      greeting = "Hello"
-    }
-  }
+  #environment {
+  #  variables = {
+  #    greeting = "Hello"
+  #  }
+  #}
 }

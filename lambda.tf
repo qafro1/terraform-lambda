@@ -20,7 +20,7 @@ EOF
 
 resource "aws_lambda_function" "web_lambda" {
   filename         = "hellocloudgurus.py"
-  function_name    = "lambda_function.py"
+  function_name    = "lambda_function_py"
   role             = "${aws_iam_role.lambda_role.arn}"
   handler          = "lambda_function.lambda_handler"
   # The filebase64sha256() function is available in Terraform 0.11.12 and later
@@ -35,3 +35,5 @@ resource "aws_lambda_function" "web_lambda" {
     }
   }
 }
+
+

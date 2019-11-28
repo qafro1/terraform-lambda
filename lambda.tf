@@ -27,8 +27,9 @@ EOF
 }
 
 resource "aws_lambda_function" "web_lambda" {
-  filename         = "hellocloudgurus.py"
-  function_name    = "${data.archive_file.zip.output_path}"
+  count            = "${var.enabled ? 1 : 0}"
+  filename         = "${data.archive_file.zip.output_path}"
+  function_name    = "hellocloudgurus"
   role             = "${aws_iam_role.lambda_role.arn}"
   handler          = "lambda_function.lambda_handler"
   # The filebase64sha256() function is available in Terraform 0.11.12 and later

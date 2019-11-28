@@ -1,4 +1,5 @@
 # Archive the code or project that we want to run
+provider "archive" {}
 data "archive_file" "zip" {
   type = "zip"
   source_file = "hellocloudgurus.py"
@@ -31,7 +32,7 @@ resource "aws_lambda_function" "web_lambda" {
   filename         = "${data.archive_file.zip.output_path}"
   function_name    = "hellocloudgurus"
   role             = "${aws_iam_role.lambda_role.arn}"
-  handler          = "lambda_function.lambda_handler"
+  handler          = "hellocloudgurus.lambda_handler"
   # The filebase64sha256() function is available in Terraform 0.11.12 and later
   # For Terraform 0.11.11 and earlier, use the base64sha256() function and the file() function:
   # source_code_hash = "${base64sha256(file("hellocloudgurus.py"))}"
@@ -40,7 +41,7 @@ resource "aws_lambda_function" "web_lambda" {
 
   environment {
     variables = {
-      body = "demo"
+      #key = "value"
     }
   }
 }

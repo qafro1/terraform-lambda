@@ -26,7 +26,7 @@ resource "aws_lambda_function" "web_lambda" {
   # The filebase64sha256() function is available in Terraform 0.11.12 and later
   # For Terraform 0.11.11 and earlier, use the base64sha256() function and the file() function:
   # source_code_hash = "${base64sha256(file("hellocloudgurus.py"))}"
-  source_code_hash = "${filebase64sha256("hellocloudgurus.py")}"
+  source_code_hash = "${filebase64sha256("~/hellocloudgurus.py")}"
   runtime          = "python3.6"
 
   environment {
@@ -35,5 +35,4 @@ resource "aws_lambda_function" "web_lambda" {
     }
   }
 }
-
 

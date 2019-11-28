@@ -39,7 +39,7 @@ resource "aws_lambda_function" "web_lambda" {
 
   environment {
     variables = {
-      #key = "value"
+      body = "demo"
     }
   }
 }

@@ -28,7 +28,7 @@ resource "aws_iam_role" "iam_for_lambda" {
 }
 
 resource "aws_lambda_function" "lambda" {
-  count = "${var.enabled ? 1 : 0}"
+  
   function_name = "guru_lambda"
 
   filename         = "${data.archive_file.zip.output_path}"

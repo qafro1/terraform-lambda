@@ -2,8 +2,12 @@
 provider "archive" {}
 data "archive_file" "zip" {
   type = "zip"
-  source_file = "${path.module}/hellocloudgurus.py"
+  #source_file = "${path.module}/hellocloudgurus.py"
   output_path = "${path.module}/hellocloudgurus.zip"
+  source  {
+    content = "test"
+    filename  = "demo.txt"
+  }
   
 }
 

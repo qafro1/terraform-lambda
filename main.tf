@@ -95,6 +95,6 @@ resource "aws_lambda_function" "lambda" {
   principal     = "apigateway.amazonaws.com"
   # The /*/*/* part allows invocation from any stage, method and resource path
   # within API Gateway REST API.
-  source_arn    = "arn:aws:apigateway:${var.aws_region}:lambda:path/2015-03-31/functions/${aws_lambda_function.lambda.arn}/*"
+  source_arn    = "arn:aws:execute-api:${var.aws_region}:${aws_api_gateway_rest_api.api.id}/*/${aws_api_gateway_method.method.http_method}${aws_api_gateway_resource.resource.path}"
   
 }

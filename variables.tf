@@ -10,3 +10,6 @@ variable "enabled" {
   description = "Create resources."
   default     = true
 }
+
+variable "accountId" {
+}

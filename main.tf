@@ -85,14 +85,16 @@ resource "aws_lambda_function" "lambda" {
   #  }
   #}
 }
-
-resource "aws_lambda_permission" "apigw_lambda" {
+/**
+ * Allow APIGateway to access the  Lambda Function.
+ */
+ resource "aws_lambda_permission" "apigw_lambda" {
   statement_id  = "AllowExecutionFromAPIGateway"
   action        = "lambda:InvokeFunction"
   function_name = "${aws_lambda_function.lambda.function_name}"
   principal     = "apigateway.amazonaws.com"
   # The /*/*/* part allows invocation from any stage, method and resource path
   # within API Gateway REST API.
-  source_arn    = "${aws_api_gateway_rest_api.api.execution_arn}/*/*/*"
+  source_arn    = "arn:aws:apigateway:${var.aws_region}:lambda:path/2015-03-31/functions/${aws_lambda_function.lambda.arn}/*"
   
 }

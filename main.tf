@@ -94,7 +94,7 @@ resource "aws_lambda_function" "lambda" {
   function_name = "${aws_lambda_function.lambda.function_name}"
   principal     = "apigateway.amazonaws.com"
   # The /*/*/* part allows invocation from any stage, method and resource path
-  # within API Gateway REST API.
+  # within API Gateway REST API for at terraform.
   source_arn    = "arn:aws:execute-api:${var.aws_region}:${var.accountId}:${aws_api_gateway_rest_api.api.id}/*/${aws_api_gateway_method.method.http_method}${aws_api_gateway_resource.resource.path}"
-  
+
 }

@@ -1,4 +1,4 @@
-resource "aws_s3_bucket" "tf-s3lambda" {
+resource "aws_s3_bucket" "tfs3lambda" {
   bucket = "devs3lambda"
   acl    = "private"
 

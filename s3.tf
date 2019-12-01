@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "qwerty2019" {
-  bucket = "qwertyuio"
+  bucket = "zxcvbn"
   acl    = "private"
 
   tags = {

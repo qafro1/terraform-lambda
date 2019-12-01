@@ -1,4 +1,4 @@
-resource "aws_s3_bucket" "s3" {
+resource "aws_s3_bucket" "s3_bucket2019" {
   bucket = "ytrewq"
   acl    = "private"
 

@@ -1,5 +1,5 @@
-resource "aws_s3_bucket" "s32019" {
-  bucket = "qwertys3"
+resource "aws_s3_bucket" "tf-s3lambda" {
+  bucket = "devs3lambda"
   acl    = "private"
 
   tags = {

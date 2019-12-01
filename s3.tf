@@ -1,5 +1,5 @@
-resource "aws_s3_bucket" "s3_bucket2019" {
-  bucket = "ytrewq"
+resource "aws_s3_bucket" "zxcvb" {
+  bucket = "helloguru12345"
   acl    = "private"
 
   tags = {

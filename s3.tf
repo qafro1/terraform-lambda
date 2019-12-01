@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "bucket_tf" {
-  bucket = "lambdaS32019"
+  bucket = "lambdas32019"
   acl    = "public"
 
   tags = {

@@ -1,4 +1,4 @@
-resource "aws_s3_bucket" "bucketlambdas3" {
+resource "aws_s3_bucket" "bucketlambdas32019" {
   bucket = "lambdas32019"
   acl    = "public"
 

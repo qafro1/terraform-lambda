@@ -9,7 +9,7 @@ resource "aws_s3_bucket" "s3_buck2019" {
 }
 resource "aws_s3_bucket_object" "s3_buck2019" {
   bucket = "helloguru12345"
-  key    = "new_object_key"
+  key    = "index.html"
   source = "index.html"
   # The filemd5() function is available in Terraform 0.11.12 and later
   # For Terraform 0.11.11 and earlier, use the md5() function and the file() function:
